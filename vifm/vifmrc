@@ -1,0 +1,2 @@
+
+nnoremap ,c :execute ':!%n ${EDITOR:-vim} $MYVIFMRC' | source $MYVIFMRC<cr>
