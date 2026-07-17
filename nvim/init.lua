@@ -2,7 +2,6 @@
 --
 -- It works on v0.12.0-dev, which is a bleeding-edge version of Neovim.
 --
---
 -- I am mostly a left-handed person. I don't really use the right-sided part of the keyboard's home row (the HJKL keys),
 -- so I tend to use the arrow keys whenever I try navigating on a file or when playing a video game.
 --
@@ -12,8 +11,8 @@
 vim.pack.add({
     -- Themes
     --{src = "https://github.com/vague2k/vague.nvim"},
-    --{src = "https://github.com/ellisonleao/gruvbox.nvim"},
-    {src = "https://github.com/olimorris/onedarkpro.nvim"},
+    {src = "https://github.com/ellisonleao/gruvbox.nvim"},
+    --{src = "https://github.com/olimorris/onedarkpro.nvim"},
     {src = "https://github.com/nvim-tree/nvim-web-devicons"}, -- For colored icons
 
     --{src = "https://github.com/stevearc/oil.nvim"},
@@ -22,6 +21,8 @@ vim.pack.add({
     {src = "https://github.com/neovim/nvim-lspconfig"},
     {src = "https://github.com/nvim-lua/plenary.nvim"},
 
+    -- Compile-mode
+    {src = "https://github.com/ej-shafran/compile-mode.nvim"},
 
     -- Other
     {src = "https://github.com/hrsh7th/nvim-cmp"},
@@ -35,7 +36,7 @@ vim.pack.add({
     --{src = "https://github.com/akinsho/bufferline.nvim" }, -- Shows a top bar
 
     -- Miscellaneous
-    {src = "https://github.com/NStefan002/speedtyper.nvim", { version = "v2" }} -- Typing exercises
+    --{src = "https://github.com/NStefan002/speedtyper.nvim", { version = "v2" }} -- Typing exercises
 })
 
 -- Leader key
@@ -348,18 +349,24 @@ vim.keymap.set("n", "<leader>8", function() harpoon_ui.nav_file(8) end)
 vim.keymap.set("n", "<leader>9", function() harpoon_ui.nav_file(9) end)
 
 
+-- Uppercase current letter (moves to next line).
+vim.keymap.set("n", "<leader>f", "<Esc>gUaw ")
 
+
+-- Find and Replace macro (Sed):
+-- :%s/<find>/<replace>/g
 
 -- Speedtyping
 vim.keymap.set("n", "<leader>st", "<cmd>Speedtyper<cr>")
 
+-- Compile-mode
+vim.keymap.set("n", "<leader>co", "<cmd>Compile<cr>")
 
 
 -- Color theme
-
 --vim.cmd("colorscheme vague")
 --vim.cmd("set background=dark")
---vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme vaporwave")
+vim.cmd("colorscheme gruvbox")
+--vim.cmd("colorscheme vaporwave")
 vim.cmd(":hi statusline guibg=NONE") -- Removes background
 vim.cmd("set completeopt+=noselect")
